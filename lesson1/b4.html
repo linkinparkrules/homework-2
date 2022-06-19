@@ -6,36 +6,8 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href=''>
-    <style>
-        #contactApp {
-            border: 1px solid black;
-            box-sizing: border-box;
-            width: fit-content;
-            text-align: center;
-        }
-        #addContact {
-            padding: 10px;
-        }
-        #searchContact {
-
-        }
-        .buttonClick {
-            background-color: blue;
-            color: white;
-            padding: 4px 20px;
-            border-radius: 7px;
-            border: hidden;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-        .fillIn {
-            padding: 4px 0 4px 0;
-            border-radius: 7px;
-            border: hidden;
-            background-color: rgb(243, 239, 239);
-            
-        }
-    </style>
+    <link rel='stylesheet' type='text/css' media='screen' href='b4.css'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 
 <body>
@@ -45,15 +17,20 @@
             <input type="text" class="fillIn" placeholder="Điện thoại">
             <button id="addContactButton" class="buttonClick"> THÊM </button>
         </div>
-        <hr style="color:silver;" />
+        <hr/ class="horizontal" >
         <div id="searchContact">
             <input type="text" class="fillIn" placeholder="Tìm kiếm">
             <button id="searchButton" class="buttonClick"> TÌM </button>
-            <button id="deleteDuplicate" class="buttonClick"> XÓA TRÙNG </button>
+            <button id="deleteDuplicate" class="buttonClick">XÓA TRÙNG</button>
         </div>
         <div id="contactList">
             <div class="contact">
-                
+                <span class="name">Alice</span>
+                <span class="phone">1900561252</span>
+            </div>
+            <div class="contact">
+                <span class="name">Alice</span>
+                <span class="phone">1900561252</span>
             </div>
         </div>
 
