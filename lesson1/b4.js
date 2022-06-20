@@ -4,7 +4,7 @@
 // o	Xoá các danh bạ bị trùng số điện thoại (ở trong ví dụ là Alice và Daniel). Sẽ xoá người nào đứng sau (Daniel sẽ bị xoá)
 
 
-let listInfo = document.querySelector(".contactList");
+let listInfo = document.getElementById("contactList");
 let nameInitial = ["Alice", "Bob", "Chris", "Daniel"];
 let phoneInitial = ["(816)-403-5456", "(572)-566-2397", "(864)-309-4841", "(816)-403-5456" ];
 
