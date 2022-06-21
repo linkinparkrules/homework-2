@@ -24,6 +24,9 @@
     border: hidden;
     font-family: 'Roboto', sans-serif;
 }
+.buttonClick:active {
+    transform: translateY(1.5px);
+}
 .fillIn {
     padding: 0px 7px;
     border-radius: 7px;
