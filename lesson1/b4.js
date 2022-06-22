@@ -107,7 +107,7 @@ function searchContact() {
 // xóa các danh bạ trùng số điện thoại
 function deleteContact() {
     let phone = document.getElementsByClassName("phone");
-    for (let i = 0; i < contactArr.length - 2; i++) {
+    for (let i = 0; i < contactArr.length - 1; i++) {
         for (let j = contactArr.length - 1; j > i; j--) {
             if (phone[i].innerText == phone[j].innerText) {
                 contactArr.splice(j,1); // xóa cả phần tử trong mảng array để tránh bị lỗi removeChild undefined
