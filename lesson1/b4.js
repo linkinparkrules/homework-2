@@ -58,11 +58,11 @@ function addContact() {
         return /\s/.test(string.charAt(0));
     }
     // nếu ko điền đủ cả name và phone thì dẹp
-    if ((phone.innerHTML || name.innerHTML) == '') {
+    if (phone.innerHTML == '' || name.innerHTML == '') {
         alert("please fill in both name and phone number!");
     } // nếu số điện thoại có chữ cái thì thôi khỏi thêm danh bạ
     else if ((checkWhiteSpace(fillIn[0].value) || checkWhiteSpace(fillIn[1].value)) == true) {
-        alert("please do not type any whitespace first!");
+        alert("you should not put whitespace before phone and number!");
     } else if (checkLetter(fillIn[1].value) == true) {
         alert("please do not type any letter in the phone number!");
     } else {
@@ -107,14 +107,12 @@ function searchContact() {
 // xóa các danh bạ trùng số điện thoại
 function deleteContact() {
     let phone = document.getElementsByClassName("phone");
-    // console.log(phone[1].parentNode);
-    // console.log(phone[1].parentElement);
-    for (let i = 0; i < contactArr.length; i++) {
-        for (let j = i + 1; j < contactArr.length; j++) {
+    for (let i = 0; i < contactArr.length - 2; i++) {
+        for (let j = contactArr.length - 1; j > i; j--) {
             if (phone[i].innerText == phone[j].innerText) {
-                
                 contactArr.splice(j,1); // xóa cả phần tử trong mảng array để tránh bị lỗi removeChild undefined
                 listInfo.removeChild(phone[j].parentNode);
+
             }
         }
     }
