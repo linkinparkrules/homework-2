@@ -9,7 +9,8 @@ let nameArr = ["Alice", "Bob", "Chris", "Daniel"];
 let phoneArr = ["(816)-403-5456", "(572)-566-2397", "(864)-309-4841", "(816)-403-5456"];
 let contactArr = [];
 
-// khởi tạo các span name và phone rồi ném chúng vào array mới
+
+    // khởi tạo các span name và phone rồi ném chúng vào array mới
 for (let i = 0; i < nameArr.length; i++) {
     let contacts = document.createElement("div");
     let name = document.createElement("span");
@@ -22,8 +23,7 @@ for (let i = 0; i < nameArr.length; i++) {
     contacts.appendChild(phone);
     contactArr[i] = contacts.innerHTML;
 }
-
-// lôi các phần tử trong mảng array mới để appendChild vào html
+    // lôi các phần tử trong mảng array mới để appendChild vào html
 for (let j = 0; j < contactArr.length; j++) {
     let contacts = document.createElement("div");
     contacts.className = "contact";
@@ -32,6 +32,7 @@ for (let j = 0; j < contactArr.length; j++) {
     listInfo.appendChild(contacts);
 }
 
+// thêm mới danh bạ và số điện thoại và sắp xếp danh bạ theo bảng chữ cái
 function addContact() {
     let fillIn = document.getElementsByClassName("fillIn");
     let contacts = document.createElement("div");
@@ -52,8 +53,17 @@ function addContact() {
     function checkLetter(string) {
         return /[a-zA-z]/.test(string);
     }
-    // nếu số điện thoại có chữ cái thì thôi khỏi thêm danh bạ
-    if (checkLetter(fillIn[1].value) == true) {
+    // function kiểm tra xem có ghi dấu cách ở đầu chữ cái ko (whitespace)
+    function checkWhiteSpace(string) {
+        return /\s/.test(string.charAt(0));
+    }
+    // nếu ko điền đủ cả name và phone thì dẹp
+    if ((phone.innerHTML || name.innerHTML) == '') {
+        alert("please fill in both name and phone number!");
+    } // nếu số điện thoại có chữ cái thì thôi khỏi thêm danh bạ
+    else if ((checkWhiteSpace(fillIn[0].value) || checkWhiteSpace(fillIn[1].value)) == true) {
+        alert("please do not type any whitespace first!");
+    } else if (checkLetter(fillIn[1].value) == true) {
         alert("please do not type any letter in the phone number!");
     } else {
         contacts.appendChild(name);
@@ -72,12 +82,41 @@ function addContact() {
 
             contacts.innerHTML = contactArr[j];
             listInfo.appendChild(contacts);
+        }
+    }
+}
 
+// tìm kiếm danh bạ theo tên và số điện thoại
+function searchContact() {
+    let fillIn = document.getElementsByClassName("fillIn");
+    let searchCon = fillIn[2].value;
+    console.log(searchCon);
+    for (let i = 0; i < contactArr.length; i++) {
+        let contact = listInfo.children[i];
+        console.log(contact.innerText.indexOf(searchCon));
+        // sử dụng hàm indexOf để trả vị trí của 1 substring có xuất hiện, nếu substring đó ko xuất hiện thì giá trị là -1
+        // những contact không phù hợp với thông tin tìm kiếm user nhập vào sẽ bị xóa đi
+        if (contact.innerText.indexOf(searchCon) == -1) {
+            contact.style.display = "none";
+        } else {
+            contact.style.display = "flex";
+        }
+    }
+}
+
+// xóa các danh bạ trùng số điện thoại
+function deleteContact() {
+    let phone = document.getElementsByClassName("phone");
+    // console.log(phone[1].parentNode);
+    // console.log(phone[1].parentElement);
+    for (let i = 0; i < contactArr.length; i++) {
+        for (let j = i + 1; j < contactArr.length; j++) {
+            if (phone[i].innerText == phone[j].innerText) {
+                
+                contactArr.splice(j,1); // xóa cả phần tử trong mảng array để tránh bị lỗi removeChild undefined
+                listInfo.removeChild(phone[j].parentNode);
+            }
         }
     }
 
 }
-
-
-
-// dùng sort() để sắp xếp các mảng array theo bảng chữ cái

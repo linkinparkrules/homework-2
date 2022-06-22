@@ -17,6 +17,7 @@
     grid-column-gap: 2%;  
 }
 .buttonClick {
+    text-align: center;
     background-color: blue;
     color: white;
     padding: 4px 2px;
