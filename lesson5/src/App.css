@@ -2,21 +2,18 @@
   text-align: center;
 }
 
-.card-class {
-  color: red;
-}
-
-.childrenhihi {
-  color: blue;
-}
-
-.card-align {
-  text-align: right;
-}
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+.trafficLight {
+  width: 20px;
+  height: 20px;
+  color: white;
+  border-radius: 20px; 
+  border: 1px solid black;
+  margin: 10px
 }
 
 @media (prefers-reduced-motion: no-preference) {

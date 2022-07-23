@@ -1,17 +1,22 @@
+body {
+  background-color: #282c34;
+  height: 100%;
+  margin: auto;
+}
+
 .App {
+  
+  margin-inline: 30%;
+}
+
+#addExpense {
   text-align: center;
+  background-color: rgb(144, 49, 233);
 }
 
-.card-class {
-  color: red;
-}
-
-.childrenhihi {
-  color: blue;
-}
-
-.card-align {
-  text-align: right;
+#addExpenseButton {
+  background-color: purple;
+  color: white;
 }
 
 .App-logo {

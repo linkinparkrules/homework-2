@@ -1,23 +1,26 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
+import {Header, Akatsuki, ThuyDoHoi, Appss, ClickButton, IncreaseButton, TitleCount} from './Card.jsx'
+import Pokemon from './pokemonAPI'
 
 function App() {
+  const [appear, setAppear] = useState(false);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* <button onClick={() => {setAppear(!appear)}}>appear header</button> */}
+      {/* toán tử logical: nếu appear là false thì sẽ lấy luôn kết quả false, còn true thì sẽ lấy kết quả bên phải ngoài cùng
+      vậy nên <Header /> phải viết ở bên phải, nếu viết bên trái thì sẽ lấy kết quả là appear */}
+      {/* {appear && <Header />}
+      <Akatsuki />
+      <ThuyDoHoi nghiaDepZai="big heart" />
+      <Appss>
+        <div>Inside Appss</div>
+        
+      </Appss>
+      <ClickButton />
+      <IncreaseButton /> */}
+      <Pokemon />
     </div>
   );
 }

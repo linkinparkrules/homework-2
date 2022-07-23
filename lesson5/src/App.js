@@ -1,12 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
-import Task from './task.jsx';
+import {LightSwitch} from './lightSwitch'
+
 
 function App() {
   return (
-    <>
-      <Task />
-    </>
+      <div>
+        <LightSwitch />
+      </div>
   );
 }
 
