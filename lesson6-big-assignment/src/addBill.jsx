@@ -23,19 +23,10 @@ export const AddExpenseButton = () => {
             <button id="addExpenseButton" style={{ display: expButton }} onClick={addExpense}>ADD NEW EXPENSE</button>
             <div id="addExpenseForm" style={{ display: expForm }}>
                 <form onSubmit={addForm}>
-                    <div style={{ display: "flex", justifyContent: "space-between" }}>
-                        <span>Name</span>
-                        <input placeholder="Enter name here..." name="expenseName" />
-                    </div>
-                    <div style={{ display: "flex", justifyContent: "space-between" }}>
-                        <span>Amount</span>
-                        <input placeholder="Enter amount here..." />
-                    </div>
-                    <div style={{ display: "flex", justifyContent: "space-between" }}>
-                        <span>Date</span>
-                        <input placeholder="dd/mm/yy" />
-                    </div>
-                    <div style={{ display: "flex", justifyContent: "flex-end" }}>
+                    <ExpenseInfo x="Name" y="Enter name here..." z="expenseName"/>
+                    <ExpenseInfo x="Amount" y="Enter amount here..." z="expenseAmount"/>
+                    <ExpenseInfo x="Date" y="dd/mm/yy" z="expenseDate"/>
+                    <div className="expenseSubmit">
                         <button type="submit">ADD</button>
                         <button type="button" onClick={cancelForm}>CANCEL</button>
                     </div>
@@ -44,6 +35,13 @@ export const AddExpenseButton = () => {
         </div>
     )
 }
+
+const ExpenseInfo = (prop) => (
+    <div className="expenseInfo">
+        <span>{prop.x}</span>
+        <input placeholder={prop.y} name={prop.z} />
+    </div>
+)
 
 export const Expense = () => {
 

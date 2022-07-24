@@ -19,6 +19,16 @@ body {
   color: white;
 }
 
+.expenseInfo {
+  display: flex; 
+  justify-content: space-between; 
+}
+
+.expenseSubmit {
+  display: flex; 
+  justify-content: flex-end; 
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
