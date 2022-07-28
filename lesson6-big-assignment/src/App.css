@@ -35,10 +35,17 @@ body {
 
 #expensePerMonth {
   background-color: white;
-   margin: 10px;
+  margin: 10px;
   padding: 5px;
   border-radius: 8px;
   display: flex; 
+  justify-content: space-around;
+}
+
+.spentChart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .spent {
@@ -52,9 +59,9 @@ body {
 
 .haveNotSpent {
   width: 100%; 
-  height: 50%; 
-  background-color: purple; 
-  border-radius: 24px 24px 0px 0px;
+  height: 100%; 
+  background-color: rgb(196, 160, 236); 
+  border-radius: 24px 24px 24px 24px;
 }
 
 .expenseList {

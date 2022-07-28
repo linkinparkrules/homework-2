@@ -8,6 +8,7 @@ export const Expense = () => {
                  "13th", "14th", "15th", "16th", "17th", "18th", "19th", "20th", "21st", "22nd", "23rd",
                  "24th", "25th", "26th", "27th", "28th", "29th", "30th", "31st"]
     const month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    const [haveNotSpent, setHaveNotSpent] = useState("100%");
     function addExpense() {
         setExpButton("none");
         setExpForm("inline");
@@ -20,16 +21,18 @@ export const Expense = () => {
         event.preventDefault();
         setExpForm("none");
         setExpButton("inline");
-        setComponents([<ExpenseList 
+        setComponents([...components, <ExpenseList 
                                 name={event.target.expenseName.value} 
                                 amount={event.target.expenseAmount.value} 
                                 day={day[Number(event.target.expenseDate.value.substr(0,2)) - 1]} 
                                 month={month[Number(event.target.expenseDate.value.substr(3,2)) - 1]} 
                                 year={event.target.expenseDate.value.substr(6,4)} 
                         />] 
-        //  + [components]
+        
         )
-        console.log(components)
+        setHaveNotSpent(
+            
+        )
     }
     return (
         <>
@@ -56,7 +59,15 @@ export const Expense = () => {
                         <option value={"2021"} />
                     </datalist>
                 </div>
-                <ExpensePerMonth />
+                <ul id="expensePerMonth">
+                    {month.map((thang) => {
+                        return (
+                            <ExpensePerMonth month={thang} heightChange={haveNotSpent} key={thang}/>
+                        )
+                    })}
+                    
+                </ul>
+                
                 {components}
                 
 
@@ -73,25 +84,14 @@ const ExpenseInfo = (prop) => (
     </div>
 )
 
-const ExpensePerMonth = () => {
-
+const ExpensePerMonth = (props) => {
     return (
-        <>
-            <div id="expensePerMonth">
-                <div>
+                <li className="spentChart" >
                     <div className="spent">
-                        <div className="haveNotSpent"></div>
+                        <div className="haveNotSpent" style={{height: props.heightChange}}></div>
                     </div>
-                    <span>Jan</span>
-                </div>
-                <div>
-                    <div className="spent">
-                        <div className="haveNotSpent"></div>
-                    </div>
-                    <span>Feb</span>
-                </div>
-            </div>
-        </>
+                    <span style={{fontSize: "50%"}}>{props.month}</span>
+                </li>            
     )
 }
 
