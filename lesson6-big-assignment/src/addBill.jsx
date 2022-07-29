@@ -8,7 +8,7 @@ export const Expense = () => {
                  "13th", "14th", "15th", "16th", "17th", "18th", "19th", "20th", "21st", "22nd", "23rd",
                  "24th", "25th", "26th", "27th", "28th", "29th", "30th", "31st"]
     const month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-    const [haveNotSpent, setHaveNotSpent] = useState("100%");
+    const [haveNotSpent, setHaveNotSpent] = useState({height: "100%", borderRadius: "24px 24px 24px 24px"});
     function addExpense() {
         setExpButton("none");
         setExpForm("inline");
@@ -31,7 +31,7 @@ export const Expense = () => {
         
         )
         setHaveNotSpent(
-            
+            {height: "50%", borderRadius: "24px 24px 0 0"}
         )
     }
     return (
@@ -62,7 +62,7 @@ export const Expense = () => {
                 <ul id="expensePerMonth">
                     {month.map((thang) => {
                         return (
-                            <ExpensePerMonth month={thang} heightChange={haveNotSpent} key={thang}/>
+                            <ExpensePerMonth month={thang} change={haveNotSpent} key={thang}/>
                         )
                     })}
                     
@@ -88,7 +88,7 @@ const ExpensePerMonth = (props) => {
     return (
                 <li className="spentChart" >
                     <div className="spent">
-                        <div className="haveNotSpent" style={{height: props.heightChange}}></div>
+                        <div className="haveNotSpent" style={props.change}></div>
                     </div>
                     <span style={{fontSize: "50%"}}>{props.month}</span>
                 </li>            
@@ -107,3 +107,5 @@ const ExpenseList = (prop) => {
         </div>
     )
 }
+
+
