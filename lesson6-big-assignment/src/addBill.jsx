@@ -8,7 +8,20 @@ export const Expense = () => {
                  "13th", "14th", "15th", "16th", "17th", "18th", "19th", "20th", "21st", "22nd", "23rd",
                  "24th", "25th", "26th", "27th", "28th", "29th", "30th", "31st"]
     const month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-    const [haveNotSpent, setHaveNotSpent] = useState({height: "100%", borderRadius: "24px 24px 24px 24px"});
+    const [haveNotSpentJan, setHaveNotSpentJan] = useState({height: "100%", borderRadius: "24px 24px 24px 24px"});
+    const [haveNotSpentFeb, setHaveNotSpentFeb] = useState({height: "100%", borderRadius: "24px 24px 24px 24px"});
+    const [haveNotSpentMar, setHaveNotSpentMar] = useState({height: "100%", borderRadius: "24px 24px 24px 24px"});
+    const [haveNotSpentApr, setHaveNotSpentApr] = useState({height: "100%", borderRadius: "24px 24px 24px 24px"});
+    const [haveNotSpentMay, setHaveNotSpentMay] = useState({height: "100%", borderRadius: "24px 24px 24px 24px"});
+    const [haveNotSpentJun, setHaveNotSpentJun] = useState({height: "100%", borderRadius: "24px 24px 24px 24px"});
+    const [haveNotSpentJul, setHaveNotSpentJul] = useState({height: "100%", borderRadius: "24px 24px 24px 24px"});
+    const [haveNotSpentAug, setHaveNotSpentAug] = useState({height: "100%", borderRadius: "24px 24px 24px 24px"});
+    const [haveNotSpentSep, setHaveNotSpentSep] = useState({height: "100%", borderRadius: "24px 24px 24px 24px"});
+    const [haveNotSpentOct, setHaveNotSpentOct] = useState({height: "100%", borderRadius: "24px 24px 24px 24px"});
+    const [haveNotSpentNov, setHaveNotSpentNov] = useState({height: "100%", borderRadius: "24px 24px 24px 24px"});
+    const [haveNotSpentDec, setHaveNotSpentDec] = useState({height: "100%", borderRadius: "24px 24px 24px 24px"});
+    const initialNotSpent = [haveNotSpentJan,haveNotSpentFeb,haveNotSpentMar,haveNotSpentApr,haveNotSpentMay,haveNotSpentJun,haveNotSpentJul,haveNotSpentAug,haveNotSpentSep,haveNotSpentOct,haveNotSpentNov,haveNotSpentDec];
+    const changeNotSpent = [setHaveNotSpentJan,setHaveNotSpentFeb,setHaveNotSpentMar,setHaveNotSpentApr,setHaveNotSpentMay,setHaveNotSpentJun,setHaveNotSpentJul,setHaveNotSpentAug,setHaveNotSpentSep,setHaveNotSpentOct,setHaveNotSpentNov,setHaveNotSpentDec]
     function addExpense() {
         setExpButton("none");
         setExpForm("inline");
@@ -30,8 +43,8 @@ export const Expense = () => {
                         />] 
         
         )
-        setHaveNotSpent(
-            {height: "50%", borderRadius: "24px 24px 0 0"}
+        changeNotSpent[Number(event.target.expenseDate.value.substr(3,2)) - 1] (
+            {height: (100 - event.target.expenseAmount.value) + "%", borderRadius: "24px 24px 0 0"}
         )
     }
     return (
@@ -60,9 +73,11 @@ export const Expense = () => {
                     </datalist>
                 </div>
                 <ul id="expensePerMonth">
-                    {month.map((thang) => {
+                    {month.map((thang, i) => {
+                        // console.log(thang);
+                        // console.log(i);
                         return (
-                            <ExpensePerMonth month={thang} change={haveNotSpent} key={thang}/>
+                            <ExpensePerMonth month={thang} change={initialNotSpent[i]} key={thang}/>
                         )
                     })}
                     
