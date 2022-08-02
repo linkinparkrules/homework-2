@@ -43,8 +43,9 @@ export const Expense = () => {
                         />] 
         
         )
+        // điền giá trị amount dưới 100 thì có thể làm đc, nhưng nếu hơn 100 hoặc khi hiệu phép tính < 0 thì ko hiển thị ra cái gì cả
         changeNotSpent[Number(event.target.expenseDate.value.substr(3,2)) - 1] (
-            {height: (100 - event.target.expenseAmount.value) + "%", borderRadius: "24px 24px 0 0"}
+            {height: (parseInt(initialNotSpent[Number(event.target.expenseDate.value.substr(3,2)) - 1].height) - parseInt(event.target.expenseAmount.value)) + "%", borderRadius: "24px 24px 0 0"}
         )
     }
     return (

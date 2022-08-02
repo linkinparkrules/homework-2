@@ -59,12 +59,14 @@ body {
 
 .haveNotSpent {
   width: 100%; 
-  height: 100%; 
   background-color: rgb(196, 160, 236); 
   border-radius: 24px 24px 24px 24px;
 }
 
 .expenseList {
+  margin: 5px;
+  background-color: rgb(104, 102, 102);
+  border-radius: 8px;
   color: white; 
   display: flex; 
   justify-content: space-between; 
@@ -77,8 +79,13 @@ body {
 }
 
 .date {
+  border: white 0.5px solid;
+  border-radius: 5px;
+  background-color: black;
   text-align: center;
   margin: 5px;
+  font-size: 50%;
+  padding: 5%;
 }
 
 .name {
@@ -86,6 +93,10 @@ body {
 }
 
 .amount {
+  border: white 0.5px solid;
+  border-radius: 5px;
+  background-color: purple;
+  padding: 10px;
   margin: 5px;
 }
 
