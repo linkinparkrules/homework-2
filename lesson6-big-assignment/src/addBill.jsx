@@ -8,7 +8,7 @@ export const Expense = () => {
         "13th", "14th", "15th", "16th", "17th", "18th", "19th", "20th", "21st", "22nd", "23rd",
         "24th", "25th", "26th", "27th", "28th", "29th", "30th", "31st"]
     const month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-    const [haveNotSpentJan, setHaveNotSpentJan] = useState({ height: "100%", borderRadius: "24px 24px 24px 24px", backgroundColor: "rgb(196, 160, 236)"});
+    const [haveNotSpentJan, setHaveNotSpentJan] = useState({ height: "100%", borderRadius: "24px 24px 24px 24px", backgroundColor: "rgb(196, 160, 236)" });
     const [haveNotSpentFeb, setHaveNotSpentFeb] = useState({ height: "100%", borderRadius: "24px 24px 24px 24px", backgroundColor: "rgb(196, 160, 236)" });
     const [haveNotSpentMar, setHaveNotSpentMar] = useState({ height: "100%", borderRadius: "24px 24px 24px 24px", backgroundColor: "rgb(196, 160, 236)" });
     const [haveNotSpentApr, setHaveNotSpentApr] = useState({ height: "100%", borderRadius: "24px 24px 24px 24px", backgroundColor: "rgb(196, 160, 236)" });
@@ -61,47 +61,44 @@ export const Expense = () => {
                 { height: (parseInt(initialNotSpent[Number(event.target.expenseDate.value.substr(3, 2)) - 1].height) - parseInt(event.target.expenseAmount.value)) + "%", borderRadius: "24px 24px 0 0" }
             )
         }
-        console.log(initialNotSpent[Number(event.target.expenseDate.value.substr(3, 2)) - 1].backgroundColor)
+    }
+    function yearlyExpense() {
+
     }
     return (
         <>
-            <div id="addExpense">
-                <button id="addExpenseButton" style={{ display: expButton }} onClick={addExpense}>ADD NEW EXPENSE</button>
-                <div id="addExpenseForm" style={{ display: expForm }}>
-                    <form onSubmit={addForm}>
-                        <ExpenseInfo x="Name" y="Enter name here..." z="expenseName" />
-                        <ExpenseInfo x="Amount" y="Enter amount here..." z="expenseAmount" />
-                        <ExpenseInfo x="Date" y="dd/mm/yyyy" z="expenseDate" />
-                        <div className="expenseSubmit">
-                            <button type="submit">ADD</button>
-                            <button type="button" onClick={cancelForm}>CANCEL</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+            <AddExpense expButton={expButton} addExpense={addExpense} expForm={expForm} addForm={addForm} cancelForm={cancelForm} />
             <div id="showExpense">
                 <div style={{ display: "flex", justifyContent: "space-between" }}>
                     <span style={{ color: "white" }}>Filter by year</span>
-                    <input list="years" name="" placeholder="Thuyxinhdep1st" />
+                    <input list="years" name="" placeholder="Thuyxinhdep1st" onChange={yearlyExpense} />
                     <datalist id="years">
-                        <option value={"2022"} />
                         <option value={"2021"} />
+                        <option value={"2022"}>this year</option>
                     </datalist>
                 </div>
-                <ul id="expensePerMonth">
-                    {month.map((thang, i) => {
-                        // console.log(thang);
-                        // console.log(i);
-                        return (
-                            <ExpensePerMonth month={thang} change={initialNotSpent[i]} key={thang} />
-                        )
-                    })}
-                </ul>
-                {components}
+                <ExpensePerYear month={month} initialNotSpent={initialNotSpent} components={components} />
             </div>
         </>
     )
 }
+
+const AddExpense = (prop) => (
+    <div id="addExpense">
+        <button id="addExpenseButton" style={{display: prop.expButton}} onClick={prop.addExpense}>ADD NEW EXPENSE</button>
+        <div id="addExpenseForm" style={{ display: prop.expForm }}>
+            <form onSubmit={prop.addForm}>
+                <ExpenseInfo x="Name" y="Enter name here..." z="expenseName" />
+                <ExpenseInfo x="Amount" y="Enter amount here..." z="expenseAmount" />
+                <ExpenseInfo x="Date" y="dd/mm/yyyy" z="expenseDate" />
+                <div className="expenseSubmit">
+                    <button type="submit">ADD</button>
+                    <button type="button" onClick={prop.cancelForm}>CANCEL</button>
+                </div>
+            </form>
+        </div>
+    </div>
+)
 
 const ExpenseInfo = (prop) => (
     <div className="expenseInfo">
@@ -109,6 +106,21 @@ const ExpenseInfo = (prop) => (
         <input style={{ width: "200px" }} placeholder={prop.y} name={prop.z} type={prop.type} />
     </div>
 )
+
+const ExpensePerYear = (props) => {
+    return (
+        <>
+            <ul id="expensePerMonth">
+                {(props.month).map((thang, i) => {
+                    return (
+                        <ExpensePerMonth month={thang} change={(props.initialNotSpent)[i]} key={thang} />
+                    )
+                })}
+            </ul>
+            {props.components}
+        </>
+    )
+}
 
 const ExpensePerMonth = (props) => {
     return (
